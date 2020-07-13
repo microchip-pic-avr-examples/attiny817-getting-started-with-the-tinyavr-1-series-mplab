@@ -52,4 +52,4 @@ The code in this repository is configured for the last assignment. Refer to the 
 
 
 ## Conclusion
- This training exercise demonstrated the different perripherals of tinyAVR 1-series, how to use the Event System to generate Event and how to use CCL to generate output.
+ This training exercise demonstrated the different peripherals of tinyAVR 1-series, how to use the Event System to generate Event and how to use CCL to generate output.
