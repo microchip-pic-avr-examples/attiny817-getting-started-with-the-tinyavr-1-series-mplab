@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>GettingStartedwiththetinyAVR1-series</name>
+            <name>attiny817-getting-started-with-the-tinyavr-1-series-mplab</name>
             <creation-uuid>d4372394-6149-430c-ac77-0f4a2c00dc37</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
