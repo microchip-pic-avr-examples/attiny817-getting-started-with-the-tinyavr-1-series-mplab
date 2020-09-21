@@ -3,28 +3,28 @@
     "category": "com.microchip.ide.project",
     "content": {
         "metaDataVersion": "1.1.0",
-        "name": "com.microchip.mcu8.mplabx.project.",
-        "version": " ",
-        "displayName": "  ",
-        "projectName": "",
-        "shortDescription": "",
+        "name": "com.microchip.mcu8.mplab.project.attiny817-getting-started-with-the-tinyavr-1-series-mplab",
+        "version": "1.0.0",
+        "displayName": "Getting Started with the tinyAVR® 1-series",
+        "projectName": "attiny817-getting-started-with-the-tinyavr-1-series-mplab",
+        "shortDescription": "This repository is a training module covering basics of GPIO, TCA, TCB, events, USART, CCL and PIT to create simple applications for the ATtinyAVR 1-series.",
         "ide": {
-            "name": "",
-            "semverRange": ""
+            "name": "MPLABX",
+            "semverRange": ">=5.40"
         },
         "compiler": [
-			{
-				"name": "",
-				"semverRange": ""
-			}
-		],
+            {
+                "name": "XC8",
+                "semverRange": "^2.29"
+            }
+        ],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "ATtiny_DFP",
+            "semverRange": "^2.2.89"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "START",
+            "semverRange": ">=1.7.360"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -32,37 +32,59 @@
             "content": {
                 "metaDataVersion": "1.0.0",
                 "category": "com.microchip.device",
-                "name": "",
+                "name": "ATtiny817",
                 "versionRange": "*"
             }
         },
-        "author": "",
+        "author": "Microchip",
         "subcategories": [
-            "",
+            "START",
             [
-               "Peripherals", ""
+                "Peripherals",
+                "TCA"
             ],
             [
-               "Peripherals", ""
-            ]            			
+                "Peripherals",
+                "TCB"
+            ],
+            [
+                "Peripherals",
+                "CCL"
+            ],
+            [
+                "Peripherals",
+                "USART"
+            ],
+            [
+                "Peripherals",
+                "RTC"
+            ],
+            [
+                "Development Kit",
+                "ATtiny817 Xplained Pro"
+            ]
         ],
         "peripherals": [
-            "",""
+            "TCA",
+            "TCB",
+            "CCL",
+            "USART",
+            "RTC"
         ],
         "keywords": [
             "",
-            ""			
+            ""
         ],
-		"additionalData": {
-			"longDescription": {
-				"metaDataVersion": "1.0.0",
-				"category": "com.microchip.portal.fileRef",
-				"content": {
-					"metaDataVersion": "1.0.0",
-					"fileName": "./README.md",
-					"mimeType": "text/markdown"
-				}
-			}
-		}
-	}
+        "additionalData": {
+            "longDescription": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.portal.fileRef",
+                "content": {
+                    "metaDataVersion": "1.0.0",
+                    "fileName": "./README.md",
+                    "mimeType": "text/markdown"
+                }
+            }
+        }
+    }
 }
