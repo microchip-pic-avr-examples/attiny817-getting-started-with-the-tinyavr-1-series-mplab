@@ -3,7 +3,7 @@
     "category": "com.microchip.ide.project",
     "content": {
         "metaDataVersion": "1.1.0",
-        "name": "com.microchip.mcu8.mplab.project.attiny817-getting-started-with-the-tinyavr-1-series-mplab",
+        "name": "com.microchip.mcu8.mplabx.project.attiny817-getting-started-with-the-tinyavr-1-series-mplab",
         "version": "1.0.0",
         "displayName": "Getting Started with the tinyAVR® 1-series",
         "projectName": "attiny817-getting-started-with-the-tinyavr-1-series-mplab",
@@ -72,8 +72,6 @@
             "RTC"
         ],
         "keywords": [
-            "",
-            ""
         ],
         "additionalData": {
             "longDescription": {
