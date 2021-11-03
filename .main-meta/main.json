@@ -2,20 +2,20 @@
     "metaDataVersion": "1.0.0",
     "category": "com.microchip.ide.project",
     "content": {
-        "metaDataVersion": "1.1.0",
+        "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.attiny817-getting-started-with-the-tinyavr-1-series-mplab",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "displayName": "Getting Started with the tinyAVR® 1-series",
         "projectName": "attiny817-getting-started-with-the-tinyavr-1-series-mplab",
         "shortDescription": "This repository is a training module covering basics of GPIO, TCA, TCB, events, USART, CCL and PIT to create simple applications for the ATtinyAVR 1-series.",
         "ide": {
-            "name": "MPLABX",
-            "semverRange": ">=5.40"
+            "name": "MPLAB X",
+            "semverRange": ">=5.40.0"
         },
         "compiler": [
             {
                 "name": "XC8",
-                "semverRange": "^2.29"
+                "semverRange": "^2.29.0"
             }
         ],
         "dfp": {
@@ -32,38 +32,11 @@
             "content": {
                 "metaDataVersion": "1.0.0",
                 "category": "com.microchip.device",
-                "name": "ATtiny817",
+                "name": "ATTINY817",
                 "versionRange": "*"
             }
         },
         "author": "Microchip",
-        "subcategories": [
-            "START",
-            [
-                "Peripherals",
-                "TCA"
-            ],
-            [
-                "Peripherals",
-                "TCB"
-            ],
-            [
-                "Peripherals",
-                "CCL"
-            ],
-            [
-                "Peripherals",
-                "USART"
-            ],
-            [
-                "Peripherals",
-                "RTC"
-            ],
-            [
-                "Development Kit",
-                "ATtiny817 Xplained Pro"
-            ]
-        ],
         "peripherals": [
             "TCA",
             "TCB",
@@ -72,6 +45,13 @@
             "RTC"
         ],
         "keywords": [
+            "Duty Cycle",
+            "Frequency Measurement",
+            "PWM",
+            "LED",
+            "Button",
+            "Getting Started",
+            "START"
         ],
         "additionalData": {
             "longDescription": {
