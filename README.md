@@ -3,21 +3,21 @@
 
 # Getting Started With the tinyAVR® 1-series
 
-This repository contains training examples on the Microchip tinyAVR® 1-series. Follow the [Training Manual - Getting Started With the tinyAVR® 1-series](https://www.microchip.com/DS40001949) from Microchip for full step-by-step description. The training is carried out on a ATtiny817 Xplained Pro board. The projects in this repository are made in MPLAB® X with MPLAB® Code Configurator (MCC). While the Training manual explains steps in Atmel Studio with Atmel START, this document will go through how to complete them in MPLAB® X with MPLAB® Code Configurator (MCC).
+This repository contains training examples on the Microchip tinyAVR® 1-series. Follow the [Training Manual - Getting Started With the tinyAVR® 1-series](https://www.microchip.com/DS40001949) from Microchip for full step-by-step instructions. The training is carried out on a ATtiny817 Xplained Pro board. The projects in this repository are made in MPLAB® X IDE with MPLAB® Code Configurator (MCC). While the training manual explains steps in Atmel Studio with Atmel START, this document will go through how to complete them in MPLAB X IDE with MPLAB Code Configurator (MCC).
 
 This training includes three assignments covering topics such as: 
 - PINMUX driver configuration and check LED toggle on button press
-- Generate a PWM by using timer counter A (TCA) and implement Variable-Pulse-Width by using the RTC interrupt
-- Duty cycle and frequency measurement using input capture mode of TCB
-- USART configuration
-- CCL (Configurable Custom Logic): A programmable logic peripheral, which can be connected to the device pins, events, or peripherals, which allows the user to eliminate external logic gates for simple glue logic functions. 
+- Generate a Pulse Width Modulation (PWM) by using Timer/Counter Type A (TCA) and implement Variable Pulse Width (VPW) by using the Real-Time Counter (RTC) interrupt
+- Duty cycle and frequency measurement using input capture mode of Timer/Counter Type B (TCB)
+- Universal Synchronous and Asynchronous Receiver and Transmitter (USART) configuration
+- CCL (Configurable Custom Logic): A programmable logic peripheral, which can be connected to the device pins, events, or peripherals, which allows the user to eliminate external logic gates for simple glue logic functions
 
-The code in this repository is configured using MCC Melody for all three assignments. Refer to the [Training Manual - Getting Started With the tinyAVR® 1-series](https://www.microchip.com/DS40001949) for additional information on how to configure from scratch.  
+The code in this repository is configured using MCC Melody for all three assignments. Refer to the [Training Manual - Getting Started With the tinyAVR® 1-series](https://www.microchip.com/DS40001949) for additional information.  
 
 ## Related Documentation
 
 - [Training Manual - Getting Started With the tinyAVR® 1-series](https://www.microchip.com/DS40001949)
-- [ATtiny817 Device Page](https://www.microchip.com/wwwproducts/en/ATtiny817)
+- [ATtiny817 device page](https://www.microchip.com/wwwproducts/en/ATtiny817)
 
 ## Software Used
 
@@ -32,18 +32,18 @@ The code in this repository is configured using MCC Melody for all three assignm
 - One female-to-female wire
 - Internet connection
 
-## Assignment 1: LED TOGGLE Application
+## Assignment 1: LED Toggle Application
 
-An application will be developed that controls the LED using the push-button on the board. The LED will be OFF while holding the button down, default state is LED ON.
+An application will be developed to control the LED using the push-button on the board. The LED will be OFF while holding the button down(default state is LED ON).
 
 On the ATtiny817 Xplained Pro board, LED0 is connected to pin PB4, and the push-button (SW0) is connected to pin PB5.
 
 For application:
-- Peripherals used: GPIO (PB4, PB5).
-- Clock: 3.33 MHz.
+- Peripherals used: GPIO (PB4, PB5)
+- Clock: 3.33 MHz
 
-### MCC setup
-This section shows how this example is set up in MCC. In the pin grid view, set PB4 to ouput and PB5 to input. On the ATtiny817 Xplained Pro these pins are connected to LED0 and SW0 respectively.
+### MCC Setup
+This section shows how this example is set up in MCC. In the pin grid view, set PB4 to ouput and PB5 to input. On the ATtiny817 Xplained Pro board, these pins are connected to LED0 and SW0, respectively.
 <p><img src="images/assignment1_mcc_pin_grid_view.jpg" width="600"/></p>
 
 In the pins tab, name the pins and set SW0 to Pull-up.
@@ -62,7 +62,7 @@ The TCA waveform output will be used as input to the TCB through the Event Syste
 
 Single-Slope PWM Generation mode will be used for TCA. Here, the period is controlled by the PER register, while the values of the CMPn compare register controls the duty cycle of the waveform generated (WG) output, the WOn. The counter value is compared to the CMPx registers and the PER register to set the waveform period or pulse width.
 
-The project from Assignment1: LED TOGGLE Application will be
+The project from Assignment 1: LED Toggle Application will be
 reconfigured to add drivers for TCA, TCB, Event System, RTC, and USART.
 
 For the application the peripherals used are:
@@ -76,48 +76,50 @@ Clock:
 - 3.33 MHz main clock
 - 1 kHz RTC clock
 
-### Physical setup
+### Physical Setup
 
-1. Use the female-to-female wire to connect PB0 to PB4, connecting the PWM signal to LED0 on the ATtiny817 Xplained Pro. With this configuration you will see LED0 on your bord switch intensity gradually down until it resets.
-<p><img src="images/assignment2_connection_1.PNG" width="500"/></p>
+1. Use the female-to-female wire to connect PB0 to PB4, connecting the PWM signal to LED0 on the ATtiny817 Xplained Pro. With this configuration you will see LED0 on your board switch intensity gradually down until it resets.
+<p><img src="images/assignment2_connection_1.png" width="500"/></p>
 
 2. Use the female-to-female wire to connect PB0 to PA5, connecting the PWM signal to the Event System. With this configuration the ATtiny817 Xplained Pro will send the calculated duty cycle and frequency to the terminal using the USART peripheral.
-<p><img src="images/assignment2_connection_2.PNG" width="500"/></p>
+<p><img src="images/assignment2_connection_2.png" width="500"/></p>
 
-### MCC setup
+### MCC Setup
 
 An overview of the MCC setup is shown in the image below:
 
 <p><img src="images/assignment2_mcc_overview.jpg" width="600"/></p>
 
 #### TCA
-In the TCA peripheral set the Requested Period to 30.33 &micro;s, set Waveform Generation Mode to Single Slope PWM, enable Compare Channel 0 Enable and set Duty Cycle 0 to 10. 
+In the TCA peripheral, set the Requested Period to 30.33 &micro;s, set Waveform Generation Mode to Single Slope PWM, enable Compare Channel 0 Enable and set Duty Cycle 0 to 10. 
 
 <p><img src="images/assignment2_mcc_tca.jpg" width="600"/></p>
 
 #### RTC
-In the RTC peripheral set Prescaling Factor to RTC Clock/32 to get a 1024 Hz RTC Clock. Set Period to 0.5(500 ms). Ensure that the Overflow Interrupt Enable is enabled.
+In the RTC peripheral, set Prescaling Factor to RTC Clock/32 to get a 1024 Hz RTC Clock. Set Period to 0.5 (500 ms). 
 
 <p><img src="images/assignment2_mcc_rtc.jpg" width="600"/></p>
+
+Ensure that the Overflow Interrupt Enable is enabled.
 <p><img src="images/assignment2_mcc_rtc_interrupt.jpg" width="600"/></p>
 
 #### Interrupt Manager
-In the System>Interrupt Manager enable Global Interrupt Enable.
+In the System>Interrupt Manager, enable Global Interrupt Enable.
 
 <p><img src="images/assignment2_mcc_interrupt_manager.jpg" width="600"/></p>
 
 #### TCB
-In the TCB peripheral set Timer Mode to FRQPW(Input Capture Frequency and Pulse-Width Measurement mode) and enable Event Input Capture Enable.
+In the TCB peripheral, set Timer Mode to FRQPW (Input Capture Frequency and Pulse-Width Measurement mode) and enable Event Input Capture Enable.
 
 <p><img src="images/assignment2_mcc_tcb.jpg" width="600"/></p>
 
-#### Event System(EVSYS)
-In the EVSYS peripheral connect GENERATORS>ASYNCCH0>PORTA_PIN5 to the CHANNELS>ASYNCCH0, then further connect CHANNELS>ASYNCCH0 to USERS>TCB0.
+#### Event System (EVSYS)
+In the EVSYS peripheral, connect GENERATORS>ASYNCCH0>PORTA_PIN5 to the CHANNELS>ASYNCCH0, then further connect CHANNELS>ASYNCCH0 to USERS>TCB0.
 
 <p><img src="images/assignment2_mcc_evsys.jpg" width="600"/></p>
 
 #### USART
-In the USART enable Redirect Printf to UART.
+In the USART, enable Redirect Printf to UART.
 
 <p><img src="images/assignment2_mcc_usart.jpg" width="600"/></p>
 
@@ -127,13 +129,13 @@ In the USART0_Peripheral disable Enable USART Receiver since the receiver is not
 
 ## Assignment 3: Basis of a Binary Frequency-Shift Keying Scheme
 
-The CCL (Configurable Custom Logic) module is a programmable logic peripheral, which can be connected to the pins, events, or peripherals on the device. It allows the user to eliminate external logic gates for simple glue logic functions.
+The CCL module is a programmable logic peripheral, which can be connected to the pins, events, or peripherals on the device. It allows the user to eliminate external logic gates for simple glue logic functions.
 
 In this assignment, a small CCL-based application will be developed. It will blink an LED at two different frequencies depending on whether a button is depressed or not. Two pulse trains of different frequencies will be generated and routed to the CCL. The CCL will be configured to select which of the pulse trains to
 pass on to the output based on the state of a third input signal as shown in the image below.
 
 CCL Input/Output Waveform
-<p><img src="images/assignment3_waveform.PNG" width="600"/></p>
+<p><img src="images/assignment3_waveform.png" width="600"/></p>
 
 
 Here, output = input1 when input3 is LOW, and output = input2 when input3 is HIGH.
@@ -153,7 +155,7 @@ The RTC peripheral offers two timing functions; the Real-Time Counter (RTC) and 
 By using the same clock source as the RTC function, the PIT can request an interrupt or trigger an output
 event on every nth clock period. n can be selected from {4, 8, 16,.. 32768}. Here the Event System will be configured to output events from the PIT. The event signals from the PIT has the form of clock signals with periods corresponding to the respective number of the RTC clock periods. This application uses the event signal corresponding to 8192 RTC clock periods. The event signal from the PIT has a frequency of 32 kHz/8192 = 3.9 Hz (period approximately 250 ms).
 
-The project from assignment 2 will be reconfigured to add the CCL driver and edit the Event System and RTC driver.
+The project from Assignment 2 will be reconfigured to add the CCL driver and edit the Event System and RTC driver.
 For this application, the peripherals used are:
 - TCA (waveform output WO0 on PB0)
 - PIT (event output)
@@ -165,12 +167,12 @@ Clock details:
 - 3.33 MHz main clock
 - PIT 32 kHz
 
-### Physical setup
+### Physical Setup
 
 1. Use the female-to-female wire to connect PA7 to PB4, connecting the CCL output signal to LED0 on the ATtiny817 Xplained Pro. LED0 will switch intensity gradually down until it resets. When the button is held down LED0 will blink with a approximate frequency of 3.9 Hz.
-<p><img src="images/assignment3_connection.PNG" width="500"/></p>
+<p><img src="images/assignment3_connection.png" width="500"/></p>
 
-### MCC setup
+### MCC Setup
 
 An overview of the MCC setup used in assignment 3 is shown in the image below. Remaining peripherals from assignment 2 can be deleted or just left as is. TCA0 is used with the same setup as assignment 2.
 
@@ -183,13 +185,13 @@ In the CCL peripheral go the settings for LUT1. Enable LUT1 and enable LUT outpu
 <p><img src="images/assignment3_mcc_ccl_lut1_1.jpg" width="600"/></p>
 <p><img src="images/assignment3_mcc_ccl_lut1_2.jpg" width="600"/></p>
 
-#### Event System(EVSYS)
-In the EVSYS peripheral connect GENERATORS>ASYNCCH1>PORTB_PIN5 to the CHANNELS>ASYNCCH1, then further connect CHANNELS>ASYNCCH1 to USERS>CCL LUT1 Event 0. Also connect GENERATORS>ASYNCCH3>PIT_DIV8192 to the CHANNELS>ASYNCCH3, then further connect CHANNELS>ASYNCCH3 to USERS>CCL LUT1 Event 1.
+#### Event System (EVSYS)
+In the EVSYS peripheral, connect GENERATORS>ASYNCCH1>PORTB_PIN5 to the CHANNELS>ASYNCCH1, then further connect CHANNELS>ASYNCCH1 to USERS>CCL LUT1 Event 0. Also connect GENERATORS>ASYNCCH3>PIT_DIV8192 to the CHANNELS>ASYNCCH3, then further connect CHANNELS>ASYNCCH3 to USERS>CCL LUT1 Event 1.
 
 <p><img src="images/assignment3_mcc_evsys.jpg" width="600"/></p>
 
 #### RTC
-In the RTC peripheral enable PIT Enable in the Periodic Interrupt Timer.
+In the RTC peripheral, enable PIT Enable in the Periodic Interrupt Timer.
 
 <p><img src="images/assignment3_mcc_pit.jpg" width="600"/></p>
 
@@ -201,9 +203,9 @@ In the RTC peripheral enable PIT Enable in the Periodic Interrupt Timer.
 
 3. Open the project in MPLAB X IDE.
 
-4. For assignment 2 and 3 connect the female-to-female wire according to the Physical setup.
+4. For Assignment 2 and 3 connect the female-to-female wire according to the Physical Setup.
 
 5. Build the solution and program the ATtiny817. 
 
 ## Conclusion
- This training exercise demonstrated the different peripherals of tinyAVR 1-series, how to use the Event System to generate Event and how to use CCL to generate output.
+ This training exercise demonstrated the different peripherals of the tinyAVR 1-series, how to use the Event System to generate an Event and how to use CCL to generate an output.
