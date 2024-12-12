@@ -34,7 +34,7 @@ The code in this repository is configured using MCC Melody for all three assignm
 
 ## Assignment 1: LED Toggle Application
 
-An application will be developed to control the LED using the push-button on the board. The LED will be OFF while holding the button down(default state is LED ON).
+An application will be developed to control the LED using the push-button on the board. The LED will be OFF while holding the button down (default state is LED ON).
 
 On the ATtiny817 Xplained Pro board, LED0 is connected to pin PB4, and the push-button (SW0) is connected to pin PB5.
 
@@ -174,12 +174,12 @@ Clock details:
 
 ### MCC Setup
 
-An overview of the MCC setup used in assignment 3 is shown in the image below. Remaining peripherals from assignment 2 can be deleted or just left as is. TCA0 is used with the same setup as assignment 2.
+An overview of the MCC setup used in Assignment 3 is shown in the image below. Remaining peripherals from Assignment 2 can be deleted or just left as is. TCA0 is used with the same setup as Assignment 2.
 
 <p><img src="images/assignment3_mcc_overview.jpg" width="600"/></p>
 
 #### CCL
-In the CCL peripheral go the settings for LUT1. Enable LUT1 and enable LUT output. Set Input 0 Source to TCA0, Input 1 Source to Event1 and Input 2 Source to Event0. Set Gate Type to custom and enter in the truth table or set the OUT Result directly to 0xac.
+In the CCL peripheral, go to the LUT1 settings. Enable LUT and Enable LUT output. Set Input 0 Source Selection to TCA0, Input 1 Source Selection to Event1 and Input 2 Source Selection to Event0. Set Gate Type to Custom and enter in the truth table or set the OUT result to 0xac.
 
 <p><img src="images/assignment3_mcc_ccl_overview.jpg" width="600"/></p>
 <p><img src="images/assignment3_mcc_ccl_lut1_1.jpg" width="600"/></p>
@@ -203,7 +203,7 @@ In the RTC peripheral, enable PIT Enable in the Periodic Interrupt Timer.
 
 3. Open the project in MPLAB X IDE.
 
-4. For Assignment 2 and 3 connect the female-to-female wire according to the Physical Setup.
+4. For Assignment 2 and 3, connect the female-to-female wire according to the Physical Setup.
 
 5. Build the solution and program the ATtiny817. 
 

@@ -44,6 +44,7 @@ int main(void)
 
     while(1)
     {
+        /* While the active low SW0 is pressed, turn off the active low LED0 */
         if(!SW0_GetValue()) {
             LED0_SetHigh();
             while(!SW0_GetValue());

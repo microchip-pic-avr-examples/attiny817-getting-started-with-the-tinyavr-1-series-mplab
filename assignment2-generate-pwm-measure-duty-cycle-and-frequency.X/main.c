@@ -49,14 +49,13 @@ void USART_send_data();
 
 int main(void)
 {
-    /* Initializes MCU, drivers and middleware */
     SYSTEM_Initialize();
     RTC_SetOVFIsrCallback(RTC_interrupt_handler);
     while (1) {
-        if (TCB0.INTFLAGS) {
-            TCB0.INTFLAGS             = TCB_CAPT_bm;
-            period_after_capture      = TCB0.CNT;
-            pulse_width_after_capture = TCB0.CCMP;
+        if (TCB0_CaptureStatusGet()) {
+            TCB0_CaptureStatusClear();
+            period_after_capture      = TCB0_CounterGet();
+            pulse_width_after_capture = TCB0_PeriodGet();
             capture_duty              = ((pulse_width_after_capture * 100) / period_after_capture);
             if (capture_duty > 100) {
                 capture_duty = 0;
@@ -76,7 +75,7 @@ void RTC_interrupt_handler()
     if (change_duty_cycle > 100) {
         change_duty_cycle = 10;
     }
-    TCA0.SINGLE.CMP0 = change_duty_cycle;
+    TCA0_Compare0Set(change_duty_cycle);
     rtc_500ms_flg    = 1;
 }
 

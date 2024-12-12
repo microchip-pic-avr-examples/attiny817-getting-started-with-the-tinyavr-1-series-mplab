@@ -38,12 +38,6 @@
     Main application
 */
 
-volatile uint16_t period_after_capture      = 0;
-volatile uint16_t pulse_width_after_capture = 0;
-volatile uint8_t  capture_duty              = 0;
-volatile uint16_t capture_frequency         = 0;
-
-volatile bool rtc_500ms_flg = 0;
 volatile uint8_t change_duty_cycle = 10;
 
 void RTC_interrupt_handler();
@@ -64,5 +58,5 @@ void RTC_interrupt_handler()
     if (change_duty_cycle > 100) {
         change_duty_cycle = 10;
     }
-    TCA0.SINGLE.CMP0 = change_duty_cycle;
+    TCA0_Compare0Set(change_duty_cycle);
 }
